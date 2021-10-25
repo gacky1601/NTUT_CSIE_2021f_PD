@@ -1,0 +1,6 @@
+na=input()
+na=na.split(' ')
+ag=input()
+ag=ag.split('/')
+sad='{FirstName} is born at year {yyyy} month {mm} day {dd} in {LastName} family.'.format(FirstName=na[0],yyyy=ag[0],mm=ag[1],dd=ag[2],LastName=na[1])
+print(sad)

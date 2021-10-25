@@ -1,0 +1,12 @@
+name=input()
+string1=input()
+grade1=input()
+grade2=input()
+grade3=input()
+all456=int(grade1)+int(grade2)+int(grade3)
+avg= int(all456/3)
+print ('Name:'+name)
+print ('ID:'+string1)
+print('Average:'+ str(avg))
+print('Total:'+ str(all456)) 
+
