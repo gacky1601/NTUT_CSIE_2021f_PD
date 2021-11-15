@@ -38,3 +38,9 @@
 # 12321
 # _121_
 # __1__
+
+def myprint(n,mark):
+    for i in range(n):
+        print(mark, end='')
+
+for i in range

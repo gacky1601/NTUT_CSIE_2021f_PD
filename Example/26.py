@@ -19,4 +19,3 @@ for o1 in range(n):
         sex=z
 print(x)
     
-    

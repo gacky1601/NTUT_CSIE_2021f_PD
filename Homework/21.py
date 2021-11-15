@@ -1,18 +1,20 @@
-# 範例輸入說明:
-# 請輸入一個小於等於200的正整數，
-# 並且判斷是否為質數。
+# 迴圈偶數連加，輸入兩整數a、b，且a 例如輸入 a=1、b=100，則輸出結果為 2550(2+4+6+8+ ... +100 =2550)
+# simple input:
+# 1
+# 100
 
-# 範例輸出說明:
-# 印出該整數，並且表示是否為質數
+# simple output:
+# 2550
 
-# Sample Input:
-# 137
+num1,num2=int(input()),int(input())
+x=0
+if num1%2 !=0:
+    num1+=1
+if num2%2 !=0:
+    num2+=1
 
-# Sample Output:
-# 137 is prime number
+for i in range(num1,num2+2,2):
+    x+=i
 
-# Sample Input:
-# 6
+print (x)
 
-# Sample Output:
-# 6 is not prime number

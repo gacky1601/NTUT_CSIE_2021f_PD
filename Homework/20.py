@@ -16,3 +16,16 @@
 
 # Sample Output:
 # 6 is not prime number
+
+def isPrime(N):
+    for i in range(2,N):
+        if N%i == 0 :
+            return False
+    return True        
+
+def main():
+    checknum=int(input())
+    result=isPrime(checknum)
+    print(result)
+
+main()
