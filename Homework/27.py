@@ -29,52 +29,59 @@ Sample output 1：
 An@Apple!A*Day=Keeps^The#Doctor_Away 72
 PEKOPEKO 16
 '''
+def Password_Input():
+    password_strength={}
+    #operation could be password or '-1'(Interrupt)
+    operation=''
+    while operation!='-1':
+        operation=input()
+        if operation!='-1':
+            password_strength[operation]=0
+    return password_strength
 
-passwd={}
-def InPasswd():
-    for i in range(100):
-        inp=input()
-        if inp=='-1':
-            break
-        else:
-            passwd[inp]=0
-def letter(N):
-    def_spe=['~','!','@','#','$','%','^','&','*','<','>','_','+','=']
-    capital=0
+def Check(WordToCheck):
+    special_letter=['~','!','@','#','$','%','^','&','*','<','>','_','+','=']
     small=0
-    digi=0
-    spe=0
-    cont=0
-    for i in N:
-        if i.isupper():
-            capital+=1
-        elif i.islower():
+    capital=0
+    digit=0
+    special=0
+    continuous=0
+    
+    for i in WordToCheck:
+        if i.islower():
             small+=1
+        elif i.isupper():
+            capital+=1
         elif i.isdigit():
-            digi+=1
-        elif i in def_spe:
-            spe+=1
-        elif N[N.index(i)].isdigit and N[N.index(i)-2].isdigit:
-            cont+=1
-        
-
-        if(digi>=5 and cont>=5):
-            cont=1
-        else:
-            cont=0
-    return [capital,small,digi,spe,cont]
-InPasswd()
-point=[0]*len(passwd)
-
-for i ,j  in enumerate(passwd):
-    iden=letter(j)
-    passwd[j]+=iden[0]*2+iden[1]+iden[2]*3+iden[3]*5+iden[4]*10
+            digit+=1
+        elif i in special_letter:
+            special+=1
+    ##Add space from begining and end of WordToCheck prevent from counting statement(WordToCheck[-1].isdigit() and WordToCheck[1].isdigit())
+    WordToCheck1 = ' ' + WordToCheck + ' '
+    for i in range (1,len(WordToCheck1)):
+        if WordToCheck1[i].isdigit():
+            if not WordToCheck1[i-1].isdigit() and not WordToCheck1[i+1].isdigit():
+                continuous+=1    
+    
+    if continuous>=5:
+        continuous=1
+    else:
+        continuous=0
+    
+    return [small,capital,digit,special,continuous]
 
 
+def Sort_and_Print(password):  
+    for i ,j  in enumerate(password):
+        #print("Now checking",i,j)
+        check_result=Check(j)
+        password[j]+=check_result[0]+check_result[1]*2+check_result[2]*3+check_result[3]*5+check_result[4]*10
 
+    sorted_password=sorted(password.items(), key=lambda strengh: strengh[1])
+    print(sorted_password[-1][0],sorted_password[-1][1])
+    print(sorted_password[0][0],sorted_password[0][1])
 
-res=sorted(passwd.items(), key=lambda d: d[0])
-print(res)
-print(res[0][0],res[0][1])
-print(len(res))
-print(res[len(res)][0],res[len(res)][1])
+def main():
+    Sort_and_Print(Password_Input())
+
+main()

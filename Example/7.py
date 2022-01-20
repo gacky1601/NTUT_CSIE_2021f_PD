@@ -1,6 +1,0 @@
-se=input()
-wo=input()
-selong=len(se)
-print (selong)
-sesplit=se.split(wo)
-print(sesplit)
